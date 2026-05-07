@@ -1,7 +1,7 @@
 # What Drives Startup Funding in Europe?
 ### Testing the Capital Supply Hypothesis with Firm-Level Data
 
-**Author:** Zeynep Naz Terzi | **Date:** May 2025
+**Author:** Zeynep Naz Terzi | **Date:** May 2026
 
 ---
 
