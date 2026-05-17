@@ -97,7 +97,7 @@ A chi-squared test confirms a significant association between sector and company
 ## Repository Structure
 
 ```
-├── analsis.R          # R analysis script
+├── analysis.R         # R analysis script
 ├── figures/
 │   ├── hist_log_funding.png   # Distribution of log total funding
 │   ├── hist_rounds.png        # Distribution of funding rounds
