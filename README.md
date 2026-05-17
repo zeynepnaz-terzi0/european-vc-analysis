@@ -1,7 +1,7 @@
 # What Drives Startup Funding in Europe?
 ### Testing the Capital Supply Hypothesis with Firm-Level Data
 
-**Author:** Zeynep Naz Terzi | **Date:** May 2026
+**Author:** Zeynep Naz Terzi | **Date:** May 2026 | **Course:** Statistics PC Home Assignment, Bocconi University
 
 ---
 
@@ -9,7 +9,7 @@
 
 European startup funding is highly unequal across countries, and the dominant policy view blames insufficient capital supply. This project challenges that narrative empirically. Using firm-level Crunchbase data on **5,964 European startups across 15 countries**, it argues that the real drivers are structural factors *upstream* of venture capital — angel investor ecosystems, founder recycling culture, and tax policy design.
 
-The central finding: Swedish startups raise on average **3.7× more than Italian startups**, a gap that persists after controlling for sector and funding structure. This cannot be explained by capital supply alone.
+The central finding: Swedish startups raise on average **3.7× more than Italian startups**, a gap that persists even after controlling for sector and funding structure (Model 3: β = 0.873, p < 0.001).
 
 ---
 
@@ -44,9 +44,10 @@ Specifically: do Swedish startups raise systematically more than Southern Europe
 
 ## Methods
 
-- **Univariate analysis:** Summary statistics; log-transformation of `funding_total_usd` to address right-skew (power-law distribution)
-- **Bivariate analysis:** Pearson correlation matrix; OLS regression (two models); country-level mean comparisons
+- **Univariate analysis:** Summary statistics (mean, median, SD, IQR); log-transformation of `funding_total_usd` to address right-skew
+- **Bivariate analysis:** Pearson correlation matrix; covariance matrix; three OLS regression models; country-level mean comparisons
 - **Chi-squared test:** Association between sector and company exit status
+- **Welch t-test:** Direct comparison of log-funding between Swedish and Italian startups
 
 ---
 
@@ -56,10 +57,26 @@ Specifically: do Swedish startups raise systematically more than Southern Europe
 Each additional funding round is associated with **~92% higher total funding** (β = 0.655, p < 0.001, R² = 0.105). This is consistent with signalling theory: completed rounds reduce investor uncertainty and attract further capital.
 
 ### Early-Stage Capital Composition Adds Little
-Seed funding is weakly significant; angel funding is not statistically significant (p = 0.439). Adding both to the model raises R² by only 0.002 — confirming that early-stage capital *amounts* do not predict eventual scale.
+Seed funding is weakly significant; angel funding is not statistically significant (p = 0.439). Adding both to the model raises R² by only 0.002.
 
-### Sweden's Structural Premium
-Despite contributing only 269 companies (5% of the sample), Swedish startups rank 3rd in mean log-funding (14.5), above Germany (14.4), the UK (14.2), Spain (13.6), and Italy (13.2). This gap persists after controlling for sector and round count.
+### Sweden's Structural Premium Survives Controls
+Three regression models were estimated, all with `log_funding` as the dependent variable:
+
+| | Model 1 | Model 2 | Model 3 |
+|---|---|---|---|
+| Intercept | 13.142*** | 13.130*** | 13.028*** |
+| `funding_rounds` | 0.655*** | 0.644*** | 0.621*** |
+| `seed` | — | sig.** | — |
+| `angel` | — | n.s. | — |
+| `country_SWE` | — | — | **0.873***** |
+| Sector controls | — | — | Yes |
+| R² | 0.105 | 0.107 | **0.237** |
+
+*Reference category in Model 3: Italy. *** p < 0.001, ** p < 0.01*
+
+Model 3 confirms Sweden's premium is real: Swedish startups raise approximately **139% more** than Italian startups all else equal (e^0.873 − 1 = 1.39). A Welch t-test on the Sweden–Italy subsample confirms this difference is statistically significant.
+
+### Country Rankings
 
 | Country | Mean log-funding | N |
 |---|---|---|
@@ -73,7 +90,7 @@ Despite contributing only 269 companies (5% of the sample), Swedish startups ran
 | Poland | 12.5 | 76 |
 
 ### Sector and Exit Outcomes
-A chi-squared test confirms a significant association between sector and company status (χ² = 44.40, df = 15, p < 0.001). Clean Technology has the highest closure rate (9.6%), reflecting capital intensity and regulatory risk; E-Commerce the lowest (4.0%).
+A chi-squared test confirms a significant association between sector and company status (χ² = 44.40, df = 15, p < 0.001). Clean Technology has the highest closure rate (9.6%); E-Commerce the lowest (4.0%).
 
 ---
 
@@ -96,7 +113,7 @@ A chi-squared test confirms a significant association between sector and company
 
 The European Commission's 2025 Startup and Scaleup Strategy focuses on improving access to finance — but this analysis suggests that addresses the symptom rather than the cause. The binding constraint is the **pipeline of investable opportunities**, not capital supply. Effective policy should target the pre-VC ecosystem:
 
-- Angel investor tax reform (modelled on Sweden's 2003 corporate capital gains deferral)
+- Angel investor tax reform (modelled on Sweden's 2003 corporate capital gains deferral, which created a self-reinforcing cycle of experienced angel capital via Spotify, Klarna, and Skype alumni)
 - Pension fund regulations that channel long-term capital toward early-stage investment
 
 ---
