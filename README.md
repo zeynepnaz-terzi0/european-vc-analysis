@@ -4,7 +4,7 @@
 
 ---
 
-This project looks at why some European startups raise a lot more money than others. The short answer from the data: it depends heavily on which country you're in and how many funding rounds you've completed — but the *why* behind that is harder to pin down.
+This project examines the reasons some European startups raise a lot more money than others. The short answer from the data: it depends heavily on which country you're in and how many funding rounds you've completed — but the *why* behind that is harder to pin down.
 
 I used Crunchbase data on 5,964 European startups across 15 countries and ran a mix of summary stats, correlations, regressions, and a chi-squared test. The Sweden vs. Italy gap is the most striking finding. Swedish startups raise on average 3.7× more than Italian ones, and that gap survives even after controlling for sector and round count.
 
@@ -12,7 +12,7 @@ I used Crunchbase data on 5,964 European startups across 15 countries and ran a 
 
 ## The data
 
-Crunchbase startup investments dataset from Kaggle (compiled around 2015). I filtered to 15 European countries and dropped any company with missing or zero total funding, leaving 5,964 companies. Each row is one company — not a time series.
+Crunchbase startup investments dataset from Kaggle (compiled around 2015). I filtered to 15 European countries and dropped any company with missing or zero total funding, leaving 5,964 companies. Each row is one company, not a time series.
 
 The UK makes up 38% of the sample, which is worth keeping in mind when interpreting country-level results. Sweden is only 5% of companies. However, punches well above its weight in average funding.
 
@@ -79,7 +79,7 @@ Chi-squared test between sector group and status: χ² = 44.40, df = 15, p < 0.0
 
 ## Limitations
 
-- **The Sweden result is associative.** Model 3 shows Swedish startups raise more. It doesn't show the reason. The angel ecosystem / tax reform / founder recycling explanation comes from external literature, not from this data.
+- **The Sweden result is associative.** Model 3 shows Swedish startups raise more. It doesn't show the reason. The angel ecosystem/tax reform/founder recycling explanation comes from external literature, not from this data.
 
 - **Funding rounds is endogenous.** Better companies raise more rounds and more money simultaneously. Treating rounds as a clean predictor of funding overstates its explanatory role.
 
