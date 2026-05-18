@@ -4,15 +4,15 @@
 
 ---
 
-This project examines the reasons some European startups raise a lot more money than others. The short answer from the data: it depends heavily on which country you're in and how many funding rounds you've completed — but the *why* behind that is harder to pin down.
+This project examines why some European startups raise significantly more money than others. The main finding is that it varies heavily on which country you're in and how many funding rounds you've completed — but the *why* behind that is harder to pin down.
 
-I used Crunchbase data on 5,964 European startups across 15 countries and ran a mix of summary stats, correlations, regressions, and a chi-squared test. The Sweden vs. Italy gap is the most striking finding. Swedish startups raise on average 3.7× more than Italian ones, and that gap survives even after controlling for sector and round count.
+I used Crunchbase data on 5,964 European startups across 15 countries and ran a mix of summary stats, correlations, regressions, and a chi-squared test. The Sweden vs. Italy gap is the most striking finding. Swedish startups raise, on average, 3.7× as much as Italian ones, and that gap persists even after controlling for sector and round count.
 
 ---
 
 ## The data
 
-Crunchbase startup investments dataset from Kaggle (compiled around 2015). I filtered to 15 European countries and dropped any company with missing or zero total funding, leaving 5,964 companies. Each row is one company, not a time series.
+Crunchbase startup investments dataset from Kaggle, compiled in 2015. I filtered to 15 European countries and dropped any company with missing or zero total funding, leaving 5,964 companies. Each row is one company, not a time series.
 
 The UK makes up 38% of the sample, which is worth keeping in mind when interpreting country-level results. Sweden is only 5% of companies. However, punches well above its weight in average funding.
 
@@ -39,7 +39,7 @@ The UK makes up 38% of the sample, which is worth keeping in mind when interpret
 
 ### Funding rounds
 
-The strongest predictor at the firm level. Each additional round is *associated with* about 92% higher total funding (β = 0.655, p < 0.001). This association is not particularly causal, companies that do well raise more rounds *and* more money, so the direction of influence goes both ways.
+The strongest predictor at the firm level. Each additional round is *associated with* about 92% higher total funding (β = 0.655, p < 0.001). This association is not particularly causal; companies that do well raise more rounds *and* more money, so the direction of influence goes both ways.
 
 ### The three regression models
 
