@@ -4,9 +4,9 @@
 
 ---
 
-This project examines why some European startups raise significantly more money than others. The main finding is that it varies heavily on which country you're in and how many funding rounds you've completed — but the *why* behind that is harder to pin down.
+This project examines why some European startups raise significantly more money than others. The main finding is that it varies heavily by country and how much funding is completed, but the reason behind that is harder to articulate.
 
-I used Crunchbase data on 5,964 European startups across 15 countries and ran a mix of summary stats, correlations, regressions, and a chi-squared test. The Sweden vs. Italy gap is the most striking finding. Swedish startups raise, on average, 3.7× as much as Italian ones, and that gap persists even after controlling for sector and round count.
+I used Crunchbase data on 5,964 European startups across 15 countries and ran a mix of summary stats, correlations, regressions, and a chi-squared test. The Sweden vs. Italy gap is the most evident finding. Swedish startups raise, on average, 3.7× as much as Italian ones, and that gap persists even after controlling for sector and round count.
 
 ---
 
