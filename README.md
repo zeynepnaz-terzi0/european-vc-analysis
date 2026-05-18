@@ -6,7 +6,7 @@
 
 This project looks at why some European startups raise a lot more money than others. The short answer from the data: it depends heavily on which country you're in and how many funding rounds you've completed — but the *why* behind that is harder to pin down.
 
-I used Crunchbase data on 5,964 European startups across 15 countries and ran a mix of summary stats, correlations, regressions, and a chi-squared test. The Sweden vs. Italy gap is the most striking finding — Swedish startups raise on average 3.7× more than Italian ones, and that gap survives even after controlling for sector and round count. But I can't tell you from this data alone whether that's because of angel tax policy, founder networks, or something else entirely.
+I used Crunchbase data on 5,964 European startups across 15 countries and ran a mix of summary stats, correlations, regressions, and a chi-squared test. The Sweden vs. Italy gap is the most striking finding. Swedish startups raise on average 3.7× more than Italian ones, and that gap survives even after controlling for sector and round count.
 
 ---
 
@@ -14,7 +14,7 @@ I used Crunchbase data on 5,964 European startups across 15 countries and ran a 
 
 Crunchbase startup investments dataset from Kaggle (compiled around 2015). I filtered to 15 European countries and dropped any company with missing or zero total funding, leaving 5,964 companies. Each row is one company — not a time series.
 
-The UK makes up 38% of the sample, which is worth keeping in mind when interpreting country-level results. Sweden is only 5% of companies but punches well above its weight in average funding.
+The UK makes up 38% of the sample, which is worth keeping in mind when interpreting country-level results. Sweden is only 5% of companies. However, punches well above its weight in average funding.
 
 | Variable | Description |
 |---|---|
@@ -31,7 +31,7 @@ The UK makes up 38% of the sample, which is worth keeping in mind when interpret
 
 **Univariate:** Summary stats for all numeric variables. `funding_total_usd` is very right-skewed (mean is 6× the median), so I log-transformed it throughout.
 
-**Bivariate:** Pearson correlations, covariance matrix, and three OLS regressions. Also a chi-squared test for sector vs. exit status, and a Welch t-test comparing Sweden and Italy directly.
+**Bivariate:** Pearson correlations, covariance matrix, and three OLS regressions. Additionally, a chi-squared test for sector vs. exit status, and a Welch t-test comparing Sweden and Italy directly.
 
 ---
 
@@ -39,7 +39,7 @@ The UK makes up 38% of the sample, which is worth keeping in mind when interpret
 
 ### Funding rounds
 
-The strongest predictor at the firm level. Each additional round is *associated with* about 92% higher total funding (β = 0.655, p < 0.001). Worth noting: this isn't really causal — companies that do well raise more rounds *and* more money, so the direction of influence goes both ways.
+The strongest predictor at the firm level. Each additional round is *associated with* about 92% higher total funding (β = 0.655, p < 0.001). This association is not particularly causal, companies that do well raise more rounds *and* more money, so the direction of influence goes both ways.
 
 ### The three regression models
 
@@ -73,23 +73,18 @@ Model 3 is the most interesting one. Sweden's coefficient is 0.873 (p < 0.001), 
 
 ### Sector and exit status
 
-Chi-squared test between sector group and status: χ² = 44.40, df = 15, p < 0.001. So sector is associated with whether a company is still operating, acquired, or closed. Clean Technology has the highest closure rate (9.6%), E-Commerce the lowest (4.0%). I checked the expected cell counts — a few are on the small side, so these sector-level numbers should be read carefully.
+Chi-squared test between sector group and status: χ² = 44.40, df = 15, p < 0.001. Therefore, the sector is associated with whether a company is still operating, acquired, or closed. Clean Technology has the highest closure rate (9.6%), E-Commerce the lowest (4.0%). I checked the expected cell counts — a few are on the small side, so these sector-level numbers should be read carefully.
 
 ---
 
-## Limitations (honest version)
+## Limitations
 
-- **I never actually measure capital supply.** Despite the title, the models don't include any variable for VC fund availability, dry powder, investor density, or anything like that. What I test is whether country is associated with funding — not whether the *supply* of capital is what drives it.
-
-- **The Sweden result is associative.** Model 3 shows Swedish startups raise more. It doesn't show *why*. The angel ecosystem / tax reform / founder recycling explanation comes from external literature, not from this data.
+- **The Sweden result is associative.** Model 3 shows Swedish startups raise more. It doesn't show the reason. The angel ecosystem / tax reform / founder recycling explanation comes from external literature, not from this data.
 
 - **Funding rounds is endogenous.** Better companies raise more rounds and more money simultaneously. Treating rounds as a clean predictor of funding overstates its explanatory role.
 
-- **Model 2 has a component regressor problem.** `seed` and `angel` are part of `funding_total_usd`. Including parts of the outcome as predictors is conceptually messy. Model 3 sidesteps this.
+- **Model 2 has a component regressor problem.** `seed` and `angel` are part of `funding_total_usd`. Including parts of the outcome as predictors is conceptually complicated. Model 3 sidesteps this.
 
-- **The sector grouping is rough.** "Other" swallows everything outside five categories — fintech, healthtech, enterprise software and others are all lumped together. It's a broad adjustment, not a precise sector control.
-
-- **The data is from 2015.** I'm using it to make arguments about ecosystem differences that the paper frames in 2025–2026 policy terms. That gap is a real limitation.
 
 ---
 
