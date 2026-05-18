@@ -18,7 +18,7 @@ The UK makes up 38% of the sample, which is worth keeping in mind when interpret
 
 | Variable | Description |
 |---|---|
-| `funding_total_usd` | Total funding raised — this is what I'm trying to explain |
+| `funding_total_usd` | Total funding raised |
 | `funding_rounds` | Number of rounds completed |
 | `venture` / `seed` / `angel` | Breakdown of funding by type |
 | `market` | Sector |
@@ -27,9 +27,9 @@ The UK makes up 38% of the sample, which is worth keeping in mind when interpret
 
 ---
 
-## What I did
+## Stats
 
-**Univariate:** Summary stats for all numeric variables. `funding_total_usd` is very right-skewed (mean is 6× the median), so I log-transformed it throughout.
+**Univariate:** Summary stats for all numeric variables. `funding_total_usd` is very right-skewed (mean is 6× the median), thus the log transformation is used.
 
 **Bivariate:** Pearson correlations, covariance matrix, and three OLS regressions. Additionally, a chi-squared test for sector vs. exit status, and a Welch t-test comparing Sweden and Italy directly.
 
@@ -54,7 +54,7 @@ The strongest predictor at the firm level. Each additional round is *associated 
 
 *Reference country in Model 3: Italy. \*\*\* p < 0.001, \*\* p < 0.01*
 
-Model 2 adds seed and angel funding — but these are actually components of the dependent variable, so that's a bit circular. Model 3 is cleaner: it adds country and sector dummies instead, with Italy as the baseline.
+Model 2 adds seed and angel funding — but these are actually components of the dependent variable, so that's a bit circular. Model 3 is cleaner: it adds country and sector variables instead, with Italy as the baseline.
 
 Model 3 is the most interesting one. Sweden's coefficient is 0.873 (p < 0.001), meaning Swedish startups are associated with about 139% more funding than Italian ones after controlling for rounds and sector (e^0.873 − 1 ≈ 1.39). R² jumps from 0.107 to 0.237, which shows country matters a lot.
 
